@@ -6,12 +6,10 @@ const PROJECT_ID  = 'o2xenqpa';
 const DATASET     = 'production';
 const API_VERSION = '2024-01-01';
 
-// Sanity image URL builder
-function imageUrl(ref) {
-  if (!ref) return null;
-  const [, id, dimensions, ext] = ref.match(/^image-([a-f0-9]+)-(\d+x\d+)-(\w+)$/) || [];
-  if (!id) return null;
-  return `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/${id}-${dimensions}.${ext}`;
+// Sanity image URL — uses the direct url field from asset->
+function imageUrl(asset) {
+  if (!asset) return null;
+  return asset.url || null;
 }
 
 // Safe text setter — only updates if value exists
@@ -106,7 +104,7 @@ function populateHero(d) {
 
   // Fallback image
   const fallbackImg = document.querySelector('.hero-fallback');
-  const heroImgUrl = d.heroImage?.url || imageUrl(d.heroImage?.asset?._ref);
+  const heroImgUrl = imageUrl(d.heroImage?.asset);
   if (fallbackImg && heroImgUrl) {
     fallbackImg.src = heroImgUrl;
     fallbackImg.alt = d.heroImage?.alt || '';
@@ -134,7 +132,7 @@ function populateHero(d) {
 
 function populateMission(d) {
   const img = document.querySelector('.mission-image img');
-  const missionImgUrl = d.missionImage?.url || imageUrl(d.missionImage?.asset?._ref);
+  const missionImgUrl = imageUrl(d.missionImage?.asset);
   if (img && missionImgUrl) {
     img.src = missionImgUrl;
     img.alt = d.missionImage?.alt || '';
