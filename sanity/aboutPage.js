@@ -1,3 +1,5 @@
+import { additionalBlocksField } from './blocks'
+
 export default {
   name: 'aboutPage',
   title: 'About Page',
@@ -5,15 +7,33 @@ export default {
   __experimental_actions: ['update', 'publish'],
 
   groups: [
+    { name: 'hero', title: 'Page Hero' },
     { name: 'mission',     title: 'Mission & Vision' },
     { name: 'problem',     title: 'The Problem' },
     { name: 'quote',       title: 'Founder Quote' },
     { name: 'people',      title: 'Founder & Board' },
     { name: 'philosophy',  title: 'Philosophy' },
     { name: 'donateCta',   title: 'Donate CTA' },
+    { name: 'blocks',      title: 'Additional Blocks' },
   ],
 
   fields: [
+
+
+    // ─── HERO ─────────────────────────────────────────
+    {
+      name: 'heroLabel',
+      title: 'Page label',
+      type: 'string',
+      group: 'hero',
+      description: 'Small label above the headline. E.g. "About"'
+    },
+    {
+      name: 'heroHeadline',
+      title: 'Page headline (H1)',
+      type: 'string',
+      group: 'hero',
+    },
 
     // ─── MISSION & VISION ─────────────────────────────
     {
@@ -233,6 +253,10 @@ export default {
       group: 'donateCta',
     },
   ],
+
+
+    // ─── ADDITIONAL BLOCKS ────────────────────────────
+    additionalBlocksField,
 
   preview: {
     prepare() { return { title: 'About Page' } }

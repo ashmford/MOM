@@ -1,3 +1,5 @@
+import { additionalBlocksField } from './blocks'
+
 export default {
   name: 'homePage',
   title: 'Home Page',
@@ -12,6 +14,7 @@ export default {
     { name: 'stats',        title: 'Stats' },
     { name: 'testimonials', title: 'Testimonials' },
     { name: 'donateCta',    title: 'Donate CTA' },
+    { name: 'blocks',       title: 'Additional Blocks' },
   ],
 
   fields: [
@@ -373,6 +376,10 @@ export default {
       group: 'donateCta',
     },
   ],
+
+
+    // ─── ADDITIONAL BLOCKS ────────────────────────────
+    additionalBlocksField,
 
   preview: {
     prepare() {

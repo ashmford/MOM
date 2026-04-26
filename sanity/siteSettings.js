@@ -37,43 +37,7 @@ export default {
               initialValue: true
             }
           ],
-            {
-      name: 'footerOrgName',
-      title: 'Organization name',
-      type: 'string',
-      description: 'Displayed in the footer. E.g. "Mending Our Mistakes, Inc."'
-    },
-    {
-      name: 'footerTagline',
-      title: 'Footer tagline',
-      type: 'text',
-      rows: 2,
-      description: 'Short description under the org name in the footer.'
-    },
-    {
-      name: 'contactEmail',
-      title: 'Contact email',
-      type: 'string',
-    },
-    {
-      name: 'contactPhone',
-      title: 'Contact phone',
-      type: 'string',
-      description: 'Optional. Displays in the footer if provided.'
-    },
-    {
-      name: 'footerCopyright',
-      title: 'Copyright line',
-      type: 'string',
-      description: 'E.g. "© 2025 Mending Our Mistakes, Inc. · Malvern, Arkansas · 501(c)(3)"'
-    },
-    {
-      name: 'footerCounties',
-      title: 'Counties line',
-      type: 'string',
-      description: 'E.g. "Serving Garland · Hot Spring · Saline · Grant Counties"'
-    },
-  preview: {
+          preview: {
             select: {
               title: 'label',
               subtitle: 'url',
@@ -83,7 +47,7 @@ export default {
               return {
                 title: visible ? title : `${title} (hidden)`,
                 subtitle
-              };
+              }
             }
           }
         }
@@ -99,25 +63,6 @@ export default {
       ]
     },
     {
-      name: 'contactEmail',
-      title: 'Contact email',
-      type: 'string',
-      description: 'Used in the footer and contact links across the site.'
-    },
-    {
-      name: 'contactPhone',
-      title: 'Contact phone',
-      type: 'string',
-      description: 'Optional. Displays in the footer if provided.'
-    },
-    {
-      name: 'footerTagline',
-      title: 'Footer tagline',
-      type: 'string',
-      description: 'The short description line under the org name in the footer.'
-    }
-  ],
-    {
       name: 'footerOrgName',
       title: 'Organization name',
       type: 'string',
@@ -134,6 +79,7 @@ export default {
       name: 'contactEmail',
       title: 'Contact email',
       type: 'string',
+      description: 'Used in footer and contact links across the site.'
     },
     {
       name: 'contactPhone',
@@ -152,10 +98,11 @@ export default {
       title: 'Counties line',
       type: 'string',
       description: 'E.g. "Serving Garland · Hot Spring · Saline · Grant Counties"'
-    },
+    }
+  ],
   preview: {
     prepare() {
-      return { title: 'Site Settings' };
+      return { title: 'Site Settings' }
     }
   }
-};
+}
