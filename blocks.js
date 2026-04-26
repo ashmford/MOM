@@ -2,9 +2,6 @@
 // Included on every page. Call renderBlocks(blocks, containerSelector) 
 // after fetching page content.
 
-const PROJECT_ID = 'o2xenqpa';
-const DATASET    = 'production';
-
 function blockImageUrl(asset) {
   if (!asset) return null;
   return asset.url || null;
