@@ -96,6 +96,9 @@ function populateAbout(d) {
     if (hero) hero.classList.add('text-only');
     if (heroMedia) heroMedia.style.display = 'none';
   } else {
+    // Has media — show the column
+    const heroMediaEl = document.getElementById('interiorHeroMedia');
+    if (heroMediaEl) heroMediaEl.classList.add('has-media');
     // Set fallback image
     if (heroImg && heroImgUrl) {
       heroImg.src = heroImgUrl;
@@ -167,8 +170,7 @@ function populateAbout(d) {
     peopleImg.src = peopleImgUrl;
     peopleImg.alt = d.peopleImage?.alt || '';
   } else if (peopleImgWrap && !peopleImgUrl) {
-    // No image yet — keep placeholder box visible, just styled as empty
-    peopleImgWrap.style.opacity = '0.3';
+    peopleImgWrap.style.opacity = '0.15';
   }
 
   if (d.people?.length) {
