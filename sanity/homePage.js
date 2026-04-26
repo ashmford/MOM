@@ -104,6 +104,22 @@ export default {
 
     // ─── MISSION ─────────────────────────────────────────
     {
+      name: 'missionLabelNum',
+      title: 'Mission section number',
+      type: 'string',
+      group: 'mission',
+      description: 'E.g. "04"',
+      initialValue: '04'
+    },
+    {
+      name: 'missionLabelText',
+      title: 'Mission section label',
+      type: 'string',
+      group: 'mission',
+      description: 'E.g. "Our mission"',
+      initialValue: 'Our mission'
+    },
+    {
       name: 'missionImage',
       title: 'Mission section image',
       type: 'image',
@@ -164,6 +180,20 @@ export default {
 
     // ─── WHO WE SERVE ─────────────────────────────────────
     {
+      name: 'serveLabelNum',
+      title: 'Who we serve section number',
+      type: 'string',
+      group: 'serve',
+      initialValue: '02'
+    },
+    {
+      name: 'serveLabelText',
+      title: 'Who we serve section label',
+      type: 'string',
+      group: 'serve',
+      initialValue: 'Who we serve'
+    },
+    {
       name: 'serveHeadlinePlain',
       title: 'Who we serve headline — plain portion',
       type: 'string',
@@ -196,6 +226,20 @@ export default {
     },
 
     // ─── SERVICES ─────────────────────────────────────────
+    {
+      name: 'servicesLabelNum',
+      title: 'Services section number',
+      type: 'string',
+      group: 'services',
+      initialValue: '05'
+    },
+    {
+      name: 'servicesLabelText',
+      title: 'Services section label',
+      type: 'string',
+      group: 'services',
+      initialValue: 'What we do'
+    },
     {
       name: 'servicesHeadlinePlain',
       title: 'Services headline — plain portion',
@@ -259,6 +303,20 @@ export default {
 
     // ─── STATS ────────────────────────────────────────────
     {
+      name: 'statsLabelNum',
+      title: 'Stats section number',
+      type: 'string',
+      group: 'stats',
+      initialValue: '08'
+    },
+    {
+      name: 'statsLabelText',
+      title: 'Stats section label',
+      type: 'string',
+      group: 'stats',
+      initialValue: 'Why this works'
+    },
+    {
       name: 'statsHeadlinePlain',
       title: 'Stats headline — plain portion',
       type: 'string',
@@ -301,6 +359,13 @@ export default {
     },
 
     // ─── TESTIMONIALS ─────────────────────────────────────
+    {
+      name: 'testimonialsLabel',
+      title: 'Testimonials section label',
+      type: 'string',
+      group: 'testimonials',
+      initialValue: 'Voices'
+    },
     {
       name: 'testimonialsHeadlinePlain',
       title: 'Testimonials headline — plain portion',
