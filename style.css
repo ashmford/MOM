@@ -1371,3 +1371,97 @@ footer {
 .donate-cta-actions .btn-outline,
 #donateCTASecondary,
 #pageDonateCTASecondary { display: none; }
+
+/* ─── PEOPLE SECTION ─────────────────────────────────── */
+
+.about-people-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.about-people-image {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--border);
+}
+
+.about-people-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-people-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-people-list {
+  list-style: none;
+  border-top: 0.5px solid var(--border);
+}
+
+.about-people-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  border-bottom: 0.5px solid var(--border);
+  gap: 16px;
+}
+
+.about-people-item:last-child { border-bottom: none; }
+
+.about-people-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-people-name {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.about-people-title {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.about-people-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 0.5px solid var(--border);
+  color: var(--text-muted);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.about-people-linkedin:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.about-people-linkedin svg { width: 15px; height: 15px; }
+
+@media (max-width: 900px) {
+  .about-people-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-people-image { aspect-ratio: 16/9; }
+}
