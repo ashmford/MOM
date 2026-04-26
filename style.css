@@ -1124,14 +1124,6 @@ footer {
   min-height: 380px;
 }
 
-.interior-hero.image-right .interior-hero-inner {
-  direction: rtl;
-}
-
-.interior-hero.image-right .interior-hero-text {
-  direction: ltr;
-}
-
 .interior-hero-media {
   position: relative;
   overflow: hidden;
@@ -1139,6 +1131,7 @@ footer {
   border-radius: 12px;
   aspect-ratio: 4/5;
   max-height: 520px;
+  order: 2;
 }
 
 .interior-hero-media img,
@@ -1165,7 +1158,7 @@ footer {
   justify-content: center;
   padding: 0;
   background: var(--bg);
-  direction: ltr;
+  order: 1;
 }
 
 .interior-hero-label {
@@ -1258,10 +1251,6 @@ footer {
     min-height: auto;
     gap: 0;
     direction: ltr !important;
-  }
-
-  .interior-hero.image-right .interior-hero-inner {
-    direction: ltr;
   }
 
   .interior-hero-media {
