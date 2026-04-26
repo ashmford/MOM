@@ -47,6 +47,7 @@ async function fetchHomeContent() {
     heroLocationLine,
     heroImage{ asset->{ _ref, url }, alt },
     heroVideoUrl,
+    missionLabelNum, missionLabelText,
     missionImage{ asset->{ _ref, url }, alt },
     missionHeadlinePlain, missionHeadlineItalic, missionHeadlineSuffix,
     missionBody,
@@ -137,6 +138,8 @@ function populateHero(d) {
 }
 
 function populateMission(d) {
+  setText('#missionNum', d.missionLabelNum);
+  setText('#missionLabelText', d.missionLabelText);
   const img = document.querySelector('.mission-image img');
   const missionImgUrl = imageUrl(d.missionImage?.asset);
   if (img && missionImgUrl) {
@@ -160,6 +163,8 @@ function populateMission(d) {
 }
 
 function populateServe(d) {
+  setText('#serveNum', d.serveLabelNum);
+  setText('#serveLabelText', d.serveLabelText);
   setHeadline('#serve-heading', d.serveHeadlinePlain, d.serveHeadlineItalic, null);
 
   if (d.serveCards?.length) {
@@ -178,6 +183,8 @@ function populateServe(d) {
 }
 
 function populateServices(d) {
+  setText('#servicesNum', d.servicesLabelNum);
+  setText('#servicesLabelText', d.servicesLabelText);
   setHeadline('#services-heading', d.servicesHeadlinePlain, d.servicesHeadlineItalic, null);
   setText('#servicesDesc', d.servicesIntro);
 
@@ -207,6 +214,8 @@ function populateServices(d) {
 }
 
 function populateStats(d) {
+  setText('#statsNum', d.statsLabelNum);
+  setText('#statsEyebrowText', d.statsLabelText);
   setHeadline('#stats-heading', d.statsHeadlinePlain, d.statsHeadlineItalic, null);
   setText('#statsIntro', d.statsIntro);
   setText('#statsSource', d.statsSource);
@@ -224,6 +233,7 @@ function populateStats(d) {
 }
 
 function populateTestimonials(d) {
+  setText('#testimonialsLabel', d.testimonialsLabel);
   setHeadline('#testimonials-heading', d.testimonialsHeadlinePlain, d.testimonialsHeadlineItalic, null);
 
   if (d.testimonials?.length) {
