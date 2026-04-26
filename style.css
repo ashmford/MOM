@@ -1130,9 +1130,9 @@ footer {
   overflow: hidden;
   background: var(--border);
   border-radius: 12px;
-  aspect-ratio: 4/5;
-  max-height: 520px;
   order: 2;
+  min-height: 420px;
+  align-self: stretch;
 }
 
 .interior-hero-media img,
