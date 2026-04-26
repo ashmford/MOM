@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Mending Our Mistakes</title>
+  <meta name="description" content="Mending Our Mistakes supports noncustodial parents in Arkansas navigating family court. Learn about our mission, founder, and philosophy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ─── ABOUT PAGE SPECIFIC ─────────────────────────── */
+
+    .about-mission { background: var(--bg-white); }
+
+    .about-mission-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-mission-image {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .about-mission-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-mission-text .display {
+      margin-bottom: 24px;
+    }
+
+    .about-mission-text p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about-vision {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .about-vision-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .about-vision p {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* ─── PROBLEM SECTION ─────────────────────────────── */
+
+    .about-problem { background: var(--bg); }
+
+    .about-problem-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-problem-body p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about-problem-body p:last-child { margin-bottom: 0; }
+
+    /* ─── QUOTE ───────────────────────────────────────── */
+
+    .about-quote {
+      background: var(--bg-white);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 96px 32px;
+    }
+
+    .about-quote-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-quote-mark {
+      width: 32px;
+      height: 3px;
+      background: var(--purple);
+      border-radius: 2px;
+      margin: 0 auto 36px;
+    }
+
+    .about-quote blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.5;
+      margin: 0 0 32px;
+    }
+
+    .about-quote cite {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      font-style: normal;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── FOUNDER + BOARD ─────────────────────────────── */
+
+    .about-people { background: var(--bg); }
+
+    .about-people-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .about-founder-image {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--border);
+      margin-bottom: 24px;
+    }
+
+    .about-founder-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .about-founder-name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .about-founder-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .about-board-list {
+      list-style: none;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .about-board-item {
+      padding: 20px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .about-board-name {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .about-board-title {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ─── PHILOSOPHY ──────────────────────────────────── */
+
+    .about-philosophy { background: var(--bg-white); }
+
+    .about-philosophy-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-philosophy-body p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about-philosophy-body p:last-child { margin-bottom: 0; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+
+    @media (max-width: 900px) {
+      .about-mission-layout,
+      .about-problem-layout,
+      .about-people-layout,
+      .about-philosophy-layout { grid-template-columns: 1fr; gap: 40px; }
+      .about-mission-image { aspect-ratio: 16/9; }
+      .about-quote { padding: 72px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mending Our Mistakes home">
+        <div class="nav-logo-mark"><span>M</span></div>
+        <div class="nav-logo-text">
+          Mending Our Mistakes
+          <small>Malvern, Arkansas</small>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><span class="nav-coming">News</span></li>
+        <li><a href="get-help.html">Get help</a></li>
+      </ul>
+      <a href="donate.html" class="btn-donate">Donate</a>
+      <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero" id="main-content">
+    <div class="page-hero-inner">
+      <div class="section-label">
+        <span>About</span>
+      </div>
+      <h1>About Mending Our Mistakes</h1>
+    </div>
+  </div>
+
+  <section class="about-mission" aria-labelledby="mission-heading">
+    <div class="section-inner">
+      <div class="about-mission-layout">
+        <div class="about-mission-image">
+          <img
+            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+            alt=""
+            id="aboutMissionImg"
+            loading="lazy"
+          >
+        </div>
+        <div class="about-mission-text">
+          <div class="section-label">
+            <span>Our mission</span>
+          </div>
+          <h2 class="display" id="mission-heading" id="aboutMissionHeadline">We exist to help noncustodial parents create <em>stable, accountable, and productive</em> lives.</h2>
+          <p id="aboutMissionBody">We exist to help noncustodial parents create stable, accountable, and productive lives so they can remain meaningfully connected to their children.</p>
+          <div class="about-vision">
+            <div class="about-vision-label">Our vision</div>
+            <p id="aboutVisionBody">We envision communities where noncustodial parents have a fair chance to rebuild stability, stay connected to their children, and create healthier futures for their families — where support and structure replace isolation, setbacks, and preventable family separation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-problem" aria-labelledby="problem-heading">
+    <div class="section-inner">
+      <div class="about-problem-layout">
+        <div>
+          <div class="section-label">
+            <span>The gap in the system</span>
+          </div>
+          <h2 class="display" id="problem-heading" id="aboutProblemHeadline">The system enforces. <em>We stabilize.</em></h2>
+        </div>
+        <div class="about-problem-body">
+          <p id="aboutProblemBody1">Arkansas's existing structures — child support enforcement, DHS case management, family court — are built around compliance and consequences, not around the conditions that make compliance possible.</p>
+          <p id="aboutProblemBody2">Parents navigating these systems face suspended licenses, unaffordable orders, housing instability, and no legal guidance. When formal involvement ends, there is no coordinated support waiting on the other side. That moment — when the system steps back but stability hasn't arrived — is where MOM works.</p>
+          <p id="aboutProblemBody3">Both DHS-adjacent parents and private family court parents encounter the same gap. MOM serves both.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="about-quote" role="region" aria-label="Founder quote">
+    <div class="about-quote-inner">
+      <div class="about-quote-mark"></div>
+      <blockquote id="aboutQuoteText">"[Rachel's words go here — one or two sentences in her voice about why this work matters.]"</blockquote>
+      <cite id="aboutQuoteCite">Rachel Tanner Moreland, Founder</cite>
+    </div>
+  </div>
+
+  <section class="about-people" aria-labelledby="people-heading">
+    <div class="section-inner">
+      <div class="section-label">
+        <span>Who we are</span>
+      </div>
+      <h2 class="display" id="people-heading">Led by people who <em>believe this works.</em></h2>
+      <div class="about-people-layout">
+        <div class="about-founder">
+          <div class="about-founder-image">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+              alt=""
+              id="founderImg"
+              loading="lazy"
+            >
+          </div>
+          <div class="about-founder-name" id="founderName">Rachel Tanner Moreland</div>
+          <div class="about-founder-title" id="founderTitle">Founder &amp; Executive Director</div>
+        </div>
+        <div class="about-board">
+          <div class="section-label" style="margin-bottom: 0;">
+            <span>Board of directors</span>
+          </div>
+          <ul class="about-board-list" id="boardList">
+            <li class="about-board-item">
+              <div class="about-board-name">[Board Member Name]</div>
+              <div class="about-board-title">[Title or Affiliation]</div>
+            </li>
+            <li class="about-board-item">
+              <div class="about-board-name">[Board Member Name]</div>
+              <div class="about-board-title">[Title or Affiliation]</div>
+            </li>
+            <li class="about-board-item">
+              <div class="about-board-name">[Board Member Name]</div>
+              <div class="about-board-title">[Title or Affiliation]</div>
+            </li>
+            <li class="about-board-item">
+              <div class="about-board-name">[Board Member Name]</div>
+              <div class="about-board-title">[Title or Affiliation]</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-philosophy" aria-labelledby="philosophy-heading">
+    <div class="section-inner">
+      <div class="about-philosophy-layout">
+        <div>
+          <div class="section-label">
+            <span>How we think</span>
+          </div>
+          <h2 class="display" id="philosophy-heading" id="aboutPhilosophyHeadline">Support and structure, <em>not isolation and consequences.</em></h2>
+        </div>
+        <div class="about-philosophy-body">
+          <p id="aboutPhilosophyBody1">Mending Our Mistakes is a navigation system — one that walks alongside parents who are working toward stability and helps them get there. That means case-by-case coordination, showing up at court dates and job interviews and supervised visits, financial education that accounts for arrears most parents never had anyone help them understand, and peer support from people who have sat in the same courtroom.</p>
+          <p id="aboutPhilosophyBody2">Stability is something you build. The model works because it's designed around that reality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="donate-cta" role="region" aria-label="Donate">
+    <div class="donate-cta-inner">
+      <div>
+        <h2>Every dollar goes directly to <em>a parent working to get back to their kids.</em></h2>
+        <p id="donateCTABody">Mending Our Mistakes operates on a lean model. Your gift funds case navigation, emergency transportation, supervised visitation, and the wraparound support that makes reunification possible.</p>
+      </div>
+      <div class="donate-cta-actions">
+        <a href="donate.html" class="btn-primary btn-large" id="donateCTAPrimary">Donate now</a>
+        <a href="get-help.html" class="btn-outline btn-large" id="donateCTASecondary">Get help</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-text">Mending Our Mistakes, Inc.</div>
+          <p id="footerTagline">Supporting noncustodial parents in Arkansas through case navigation, employment, legal guidance, and peer support.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Organization</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#rachel">Our founder</a></li>
+            <li><a href="about.html#board">Board</a></li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><span class="coming">News (coming soon)</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="get-help.html">Get help</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="partners.html">Become a partner</a></li>
+            <li><a href="mailto:info@mendingourmistakes.org" id="footerEmail">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span id="footerCopyright">&copy; 2025 Mending Our Mistakes, Inc. &middot; Malvern, Arkansas &middot; 501(c)(3)</span>
+        <span id="footerCounties">Serving Garland &middot; Hot Spring &middot; Saline &middot; Grant Counties</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script src="about.js"></script>
+  <script>
+    const navToggle = document.querySelector('.nav-mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+      navLinks.classList.add('mobile-open');
+      navOverlay.style.display = 'block';
+      requestAnimationFrame(() => navOverlay.classList.add('open'));
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      navLinks.classList.remove('mobile-open');
+      navOverlay.classList.remove('open');
+      navOverlay.addEventListener('transitionend', () => {
+        navOverlay.style.display = 'none';
+      }, { once: true });
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.contains('mobile-open') ? closeNav() : openNav();
+    });
+    navOverlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) closeNav();
+    });
+  </script>
+</body>
+</html>
