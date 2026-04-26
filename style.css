@@ -1274,3 +1274,86 @@ footer {
 
   .interior-hero-sub { max-width: 100%; }
 }
+
+/* ─── ANIMATIONS ──────────────────────────────────────── */
+
+/* Only run if user hasn't requested reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Fade-up keyframe */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hero load animations — staggered sequence */
+  .hero-eyebrow {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.1s;
+  }
+
+  .hero h1 {
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.22s;
+  }
+
+  .hero-sub {
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.34s;
+  }
+
+  .hero-ctas {
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.44s;
+  }
+
+  .hero-location {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.54s;
+  }
+
+  /* Interior hero load animations */
+  .interior-hero-label {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.1s;
+  }
+
+  .interior-hero h1 {
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.22s;
+  }
+
+  .interior-hero-sub {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.34s;
+  }
+
+  .interior-hero-media {
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.15s;
+  }
+
+  /* Scroll-triggered fade-up */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+}
