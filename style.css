@@ -1357,3 +1357,17 @@ footer {
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 }
+
+/* Secondary buttons hidden until JS populates them */
+.hero-ctas .btn-outline,
+.services-cta .btn-outline,
+.donate-cta-actions .btn-outline,
+#donateCTASecondary,
+#pageDonateCTASecondary { display: none; }
+
+/* Secondary buttons hidden until JS populates them */
+.hero-ctas .btn-outline,
+.services-cta .btn-outline,
+.donate-cta-actions .btn-outline,
+#donateCTASecondary,
+#pageDonateCTASecondary { display: none; }
