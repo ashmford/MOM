@@ -40,6 +40,7 @@ function setImage(selector, asset, alt) {
 
 async function fetchAboutContent() {
   const query = encodeURIComponent(`*[_type == "aboutPage"][0]{
+    heroLabel, heroHeadline,
     missionImage{ asset->{ url }, alt },
     missionHeadlinePlain, missionHeadlineItalic, missionHeadlineSuffix,
     missionBody, visionBody,
@@ -55,7 +56,8 @@ async function fetchAboutContent() {
     donateHeadlinePlain, donateHeadlineItalic,
     donateBody,
     donatePrimaryLabel, donatePrimaryUrl,
-    donateSecondaryLabel, donateSecondaryUrl
+    donateSecondaryLabel, donateSecondaryUrl,
+    additionalBlocks[]{ ..., image{ asset->{ url }, alt }, logos[]{ name, url, logo{ asset->{ url }, alt } }, stats[]{ number, label }, testimonials[]{ quote, name, detail } }
   }`);
 
   const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${query}`;
@@ -71,6 +73,10 @@ async function fetchAboutContent() {
 }
 
 function populateAbout(d) {
+  // Hero
+  setText('#aboutHeroLabel', d.heroLabel);
+  setText('#aboutHeroHeadline', d.heroHeadline);
+
   // Mission & Vision
   setImage('#aboutMissionImg', d.missionImage?.asset, d.missionImage?.alt);
   setHeadline('#aboutMissionHeadline', d.missionHeadlinePlain, d.missionHeadlineItalic, d.missionHeadlineSuffix);
@@ -133,6 +139,7 @@ function populateAbout(d) {
   setText('#footerCounties', d.footerCounties);
   const emailEl = document.getElementById('footerEmail');
   if (emailEl && d.contactEmail) emailEl.href = `mailto:${d.contactEmail}`;
+  if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
 }
 
 async function initAboutPage() {

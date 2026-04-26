@@ -67,7 +67,8 @@ async function fetchHomeContent() {
     donateHeadlinePlain, donateHeadlineItalic,
     donateBody,
     donatePrimaryLabel, donatePrimaryUrl,
-    donateSecondaryLabel, donateSecondaryUrl
+    donateSecondaryLabel, donateSecondaryUrl,
+    additionalBlocks[]{ ..., image{ asset->{ url }, alt }, logos[]{ name, url, logo{ asset->{ url }, alt } }, stats[]{ number, label }, testimonials[]{ quote, name, detail } }
   }`);
 
   const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${query}`;
@@ -261,6 +262,7 @@ async function initHomePage() {
   populateStats(d);
   populateTestimonials(d);
   populateDonate(d);
+  if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
 }
 
 document.addEventListener('DOMContentLoaded', initHomePage);

@@ -1015,3 +1015,83 @@ footer {
   .hero-ctas { flex-direction: column; }
   .hero-ctas a { text-align: center; }
 }
+
+/* ─── ADDITIONAL BLOCKS ───────────────────────────────── */
+
+.block-richtext {
+  background: var(--bg-white);
+  padding: 96px 32px;
+}
+
+.block-richtext .display { max-width: 760px; }
+
+.block-body {
+  font-size: 17px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 720px;
+}
+
+.block-stats { padding: 80px 32px; }
+
+.block-quote {
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.block-imagetext { background: var(--bg); }
+
+.block-cta {
+  border-top: 0.5px solid var(--border);
+  background: var(--bg-white);
+}
+
+.block-partners {
+  background: var(--bg);
+  padding: 80px 32px;
+}
+
+.partner-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.partner-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.partner-logo-item:hover { opacity: 1; }
+
+.partner-logo-item img {
+  max-height: 56px;
+  max-width: 160px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.15s;
+}
+
+.partner-logo-item:hover img { filter: grayscale(0%); }
+
+.partner-logo-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.block-testimonials { background: var(--bg); }
+
+@media (max-width: 900px) {
+  .block-richtext { padding: 72px 24px; }
+  .block-partners { padding: 64px 24px; }
+  .partner-logo-grid { gap: 24px; }
+}
