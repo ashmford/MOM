@@ -40,6 +40,7 @@ function setImage(selector, asset, alt) {
 
 async function fetchAboutContent() {
   const query = encodeURIComponent(`*[_type == "aboutPage"][0]{
+    seoTitle, seoDescription, seoImage{ asset->{ url } },
     heroLabel, heroHeadline, heroSubhead,
     heroImage{ asset->{ url }, alt }, heroVideoUrl,
     missionImage{ asset->{ url }, alt },
@@ -220,6 +221,7 @@ function populateAbout(d) {
   setText('#footerCounties', d.footerCounties);
   const emailEl = document.getElementById('footerEmail');
   if (emailEl && d.contactEmail) emailEl.href = `mailto:${d.contactEmail}`;
+  if (window.applySeo) window.applySeo(d);
   if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
 }
 
