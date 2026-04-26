@@ -34,6 +34,44 @@ export default {
       type: 'string',
       group: 'hero',
     },
+    {
+      name: 'heroSubhead',
+      title: 'Hero subheadline',
+      type: 'text',
+      rows: 2,
+      group: 'hero',
+      description: 'Optional. One sentence below the H1.'
+    },
+    {
+      name: 'heroImage',
+      title: 'Hero image',
+      type: 'image',
+      group: 'hero',
+      options: { hotspot: true },
+      description: 'Optional. Leave blank for text-only hero.',
+      fields: [{ name: 'alt', title: 'Alt text', type: 'string' }]
+    },
+    {
+      name: 'heroVideoUrl',
+      title: 'Hero video URL',
+      type: 'url',
+      group: 'hero',
+      description: 'Optional. Paste a direct .mp4 URL. Used instead of image if provided.'
+    },
+    {
+      name: 'heroImagePosition',
+      title: 'Image position',
+      type: 'string',
+      group: 'hero',
+      options: {
+        list: [
+          { title: 'Image on left', value: 'left' },
+          { title: 'Image on right', value: 'right' }
+        ],
+        layout: 'radio'
+      },
+      initialValue: 'left'
+    },
 
     // ─── MISSION & VISION ─────────────────────────────
     {
