@@ -32,6 +32,7 @@ function getSlug() {
 
 async function fetchPage(slug) {
   const query = encodeURIComponent(`*[_type == "genericPage" && slug.current == "${slug}"][0]{
+    seoTitle, seoDescription, seoImage{ asset->{ url } },
     title, slug,
     heroType, heroLabel, heroHeadline, heroHeadlineItalic, heroSubhead,
     heroImage{ asset->{ url }, alt }, heroVideoUrl,
@@ -157,6 +158,7 @@ async function initPage() {
   }
 
   renderHero(d);
+  if (window.applySeo) window.applySeo(d);
   if (window.renderBlocks) window.renderBlocks(d.blocks, '#pageBlocksAnchor');
   renderDonateCta(d);
 }
