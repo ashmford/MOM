@@ -109,7 +109,7 @@ function populateAbout(d) {
   }
 
   // Philosophy
-  setHeadline('#philosophy-heading', d.philosophyHeadlinePlain, d.philosophyHeadlineItalic, null);
+  setHeadline('#aboutPhilosophyHeadline', d.philosophyHeadlinePlain, d.philosophyHeadlineItalic, null);
   setText('#aboutPhilosophyBody1', d.philosophyBody1);
   setText('#aboutPhilosophyBody2', d.philosophyBody2);
 
