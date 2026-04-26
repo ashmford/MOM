@@ -980,8 +980,8 @@ footer {
 @media (max-width: 900px) {
   section { padding: 72px 24px; }
   .nav-links { display: none; }
-  .nav-mobile-toggle { display: flex; margin-left: 0; }
-  .btn-donate { font-size: 13px; padding: 8px 16px; margin-left: auto; margin-right: 8px; }
+  .nav-mobile-toggle { display: flex; margin-left: 12px; }
+  .btn-donate { font-size: 12px; padding: 7px 12px; margin-left: auto; margin-right: 0; }
   .hero h1 { font-size: 36px; }
   .hero-sub { font-size: 16px; }
   .hero-overlay { background: linear-gradient(180deg, rgba(245,243,238,0.90) 50%, rgba(245,243,238,0.40) 100%); }
