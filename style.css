@@ -146,9 +146,9 @@ nav {
 }
 
 .nav-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-mid);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
   text-decoration: none;
   transition: color 0.15s;
 }
