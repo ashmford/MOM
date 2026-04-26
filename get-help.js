@@ -38,6 +38,9 @@ function populateInteriorHero(d) {
     return;
   }
 
+  // Has media — show the column
+  if (media) media.classList.add('has-media');
+
   if (img && imgUrl) { img.src = imgUrl; img.alt = d.heroImage?.alt || ''; }
 
   if (video && d.heroVideoUrl && !prefersReduced) {
