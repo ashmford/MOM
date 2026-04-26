@@ -168,7 +168,7 @@ export default {
       description: 'E.g. "Rachel Tanner Moreland, Founder"'
     },
 
-    // ─── FOUNDER & BOARD ──────────────────────────────
+    // ─── PEOPLE ───────────────────────────────────────
     {
       name: 'peopleHeadlinePlain',
       title: 'Section headline — plain portion',
@@ -182,36 +182,18 @@ export default {
       group: 'people',
     },
     {
-      name: 'founderImage',
-      title: "Founder photo",
-      type: 'image',
-      group: 'people',
-      options: { hotspot: true },
-      fields: [{ name: 'alt', title: 'Alt text', type: 'string', validation: Rule => Rule.required().error('Alt text required.') }]
-    },
-    {
-      name: 'founderName',
-      title: 'Founder name',
-      type: 'string',
-      group: 'people',
-    },
-    {
-      name: 'founderTitle',
-      title: 'Founder title',
-      type: 'string',
-      group: 'people',
-    },
-    {
-      name: 'boardMembers',
-      title: 'Board members',
+      name: 'people',
+      title: 'People',
       type: 'array',
       group: 'people',
+      description: 'List everyone — founder, board members, staff — in the order you want them to appear.',
       of: [
         {
           type: 'object',
           fields: [
-            { name: 'name', title: 'Name', type: 'string' },
-            { name: 'title', title: 'Title or affiliation', type: 'string' },
+            { name: 'name', title: 'Name', type: 'string', validation: Rule => Rule.required() },
+            { name: 'title', title: 'Title or role', type: 'string', description: 'E.g. "Founder & Executive Director" or "Board Member"' },
+            { name: 'linkedinUrl', title: 'LinkedIn URL', type: 'url', description: 'Optional. Will show a LinkedIn icon next to their name.' },
           ],
           preview: { select: { title: 'name', subtitle: 'title' } }
         }
