@@ -41,7 +41,7 @@ function setImage(selector, asset, alt) {
 async function fetchAboutContent() {
   const query = encodeURIComponent(`*[_type == "aboutPage"][0]{
     heroLabel, heroHeadline, heroSubhead,
-    heroImage{ asset->{ url }, alt }, heroVideoUrl, heroImagePosition,
+    heroImage{ asset->{ url }, alt }, heroVideoUrl,
     missionImage{ asset->{ url }, alt },
     missionHeadlinePlain, missionHeadlineItalic, missionHeadlineSuffix,
     missionBody, visionBody,
@@ -86,14 +86,7 @@ function populateAbout(d) {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Image position
-  if (hero && d.heroImagePosition === 'right') {
-    hero.classList.add('image-right');
-    // Move media column to end using CSS order
-    const media = document.getElementById('interiorHeroMedia');
-    const text = hero.querySelector('.interior-hero-text');
-    if (media) media.style.order = '2';
-    if (text) text.style.order = '1';
-  }
+
 
   const heroImgUrl = imageUrl(d.heroImage?.asset);
 
