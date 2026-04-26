@@ -21,6 +21,7 @@ function setHeadline(id, plain, italic) {
 
 async function fetchPartners() {
   const query = encodeURIComponent(`*[_type == "partnersPage"][0]{
+    seoTitle, seoDescription, seoImage{ asset->{ url } },
     heroLabel, heroHeadlinePlain, heroHeadlineItalic, heroSubhead,
     heroCtaLabel, heroCtaUrl,
     heroImage{ asset->{ url }, alt }, heroVideoUrl,
@@ -68,6 +69,9 @@ function populateHero(d) {
     if (media) media.style.display = 'none';
     return;
   }
+
+  // Has media — show the column
+  if (media) media.classList.add('has-media');
 
   if (img && imgUrl) { img.src = imgUrl; img.alt = d.heroImage?.alt || ''; }
 
@@ -164,6 +168,7 @@ async function initPartnersPage() {
   setText('footerCopyright', d.footerCopyright);
   setText('footerCounties', d.footerCounties);
 
+  if (window.applySeo) window.applySeo(d);
   if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
 }
 
