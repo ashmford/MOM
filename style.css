@@ -1133,6 +1133,11 @@ footer {
   order: 2;
   min-height: 420px;
   align-self: stretch;
+  display: none;
+}
+
+.interior-hero-media.has-media {
+  display: block;
 }
 
 .interior-hero-media img,
