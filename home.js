@@ -140,7 +140,7 @@ function populateMission(d) {
   }
 
   setHeadline('#mission-heading', d.missionHeadlinePlain, d.missionHeadlineItalic, d.missionHeadlineSuffix);
-  setText('.mission-text > p', d.missionBody);
+  setText('#aboutMissionBodyHome', d.missionBody);
 
   if (d.missionDetails?.length) {
     const items = document.querySelectorAll('.mission-detail-item');
@@ -174,7 +174,7 @@ function populateServe(d) {
 
 function populateServices(d) {
   setHeadline('#services-heading', d.servicesHeadlinePlain, d.servicesHeadlineItalic, null);
-  setText('.services-desc', d.servicesIntro);
+  setText('#servicesDesc', d.servicesIntro);
 
   if (d.serviceCards?.length) {
     const cards = document.querySelectorAll('.service-card');
@@ -202,8 +202,8 @@ function populateServices(d) {
 
 function populateStats(d) {
   setHeadline('#stats-heading', d.statsHeadlinePlain, d.statsHeadlineItalic, null);
-  setText('.stats-inner > p:not(.stats-eyebrow):not(.stats-source)', d.statsIntro);
-  setText('.stats-source', d.statsSource);
+  setText('#statsIntro', d.statsIntro);
+  setText('#statsSource', d.statsSource);
 
   if (d.stats?.length) {
     const items = document.querySelectorAll('.stat-item');
