@@ -9,113 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .partners-category { background: var(--bg-white); }
-    .partners-category:nth-child(even) { background: var(--bg); }
-
-    .partners-category-layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .partners-category-label {
-      position: sticky;
-      top: calc(var(--nav-h) + 24px);
-    }
-
-    .partners-category-body p {
-      font-size: 17px;
-      color: var(--text-mid);
-      line-height: 1.75;
-    }
-
-    .partners-list-section { background: var(--bg); }
-
-    .partners-list {
-      list-style: none;
-      border-top: 0.5px solid var(--border);
-      margin-top: 48px;
-      columns: 2;
-      column-gap: 80px;
-    }
-
-    .partners-list-item {
-      padding: 16px 0;
-      border-bottom: 0.5px solid var(--border);
-      break-inside: avoid;
-    }
-
-    .partners-list-item a {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .partners-list-item a:hover {
-      color: var(--purple);
-      border-color: var(--purple);
-    }
-
-    .partners-list-item span {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .partners-bottom-cta { background: var(--bg-white); border-top: 0.5px solid var(--border); }
-
-    .partners-bottom-cta-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 96px 32px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .partners-bottom-cta h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.2;
-      max-width: 560px;
-    }
-
-    .partners-bottom-cta h2 em { font-style: italic; color: var(--purple); }
-
-    .partners-bottom-cta p {
-      font-size: 16px;
-      color: var(--text-mid);
-      margin-top: 16px;
-      max-width: 500px;
-      line-height: 1.7;
-    }
-
-    .partners-bottom-cta-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: stretch;
-      flex-shrink: 0;
-      min-width: 200px;
-    }
-
-    @media (max-width: 900px) {
-      .partners-category-layout { grid-template-columns: 1fr; gap: 24px; }
-      .partners-category-label { position: static; }
-      .partners-list { columns: 1; }
-      .partners-bottom-cta-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
-    }
-  </style>
+  
 </head>
 <body>
 
@@ -229,13 +123,13 @@
     </div>
   </section>
 
-  <div class="partners-bottom-cta" role="region" aria-label="Become a partner">
-    <div class="partners-bottom-cta-inner">
+  <div class="donate-cta" role="region" aria-label="Become a partner">
+    <div class="donate-cta-inner">
       <div>
         <h2 id="bottomCtaHeadline">Ready to <em>partner with us?</em></h2>
         <p id="bottomCtaBody">We're actively building relationships with organizations across our four-county service area. If you work in legal advocacy, supervised visitation, health services, housing, workforce development, or community support — we want to talk.</p>
       </div>
-      <div class="partners-bottom-cta-actions">
+      <div class="donate-cta-actions">
         <a href="mailto:admin@mendingourmistakes.org" class="btn-primary btn-large" id="bottomCtaBtn">Email us</a>
       </div>
     </div>
