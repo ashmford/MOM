@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — Mending Our Mistakes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .not-found {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+    }
+    .not-found-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 96px 32px;
+    }
+    .not-found-num {
+      font-family: var(--font-serif);
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 600;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .not-found h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+    .not-found h1 em {
+      font-style: italic;
+      color: var(--purple);
+    }
+    .not-found p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mending Our Mistakes home">
+        <div class="nav-logo-mark"><span>M</span></div>
+        <div class="nav-logo-text">
+          Mending Our Mistakes
+          <small>Malvern, Arkansas</small>
+        </div>
+      </a>
+      <ul class="nav-links" role="list"></ul>
+      <a href="donate.html" class="btn-donate">Donate</a>
+      <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="not-found" id="main-content">
+    <div class="not-found-inner">
+      <div class="not-found-num">404</div>
+      <h1>This page doesn't exist, but <em>we can help you find what you need.</em></h1>
+      <p>The page you're looking for may have moved or never existed. Head back to the homepage and we'll get you where you're going.</p>
+      <a href="index.html" class="btn-primary btn-large">Back to home</a>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    const navToggle = document.querySelector('.nav-mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+    function openNav() {
+      navLinks.classList.add('mobile-open');
+      navOverlay.style.display = 'block';
+      requestAnimationFrame(() => navOverlay.classList.add('open'));
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      navLinks.classList.remove('mobile-open');
+      navOverlay.classList.remove('open');
+      navOverlay.addEventListener('transitionend', () => { navOverlay.style.display = 'none'; }, { once: true });
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+    navToggle.addEventListener('click', () => { navLinks.classList.contains('mobile-open') ? closeNav() : openNav(); });
+    navOverlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) closeNav(); });
+  </script>
+</body>
+</html>
