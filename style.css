@@ -1264,10 +1264,29 @@ footer {
   outline-offset: 3px;
 }
 
-/* Text-only interior hero */
+/* Text-only interior hero — centered, max 800px */
+.interior-hero.text-only .interior-hero-inner {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
 .interior-hero.text-only .interior-hero-text {
   padding: 0;
-  max-width: 720px;
+  max-width: 800px;
+  align-items: center;
+}
+
+.interior-hero.text-only .interior-hero-label {
+  justify-content: center;
+}
+
+.interior-hero.text-only .interior-hero-label::before {
+  display: none;
+}
+
+.interior-hero.text-only .interior-hero-sub {
+  max-width: 100%;
 }
 
 /* Responsive */
