@@ -256,12 +256,44 @@
     </div>
   </nav>
 
-  <div class="page-hero" id="main-content">
-    <div class="page-hero-inner">
-      <div class="section-label">
-        <span id="aboutHeroLabel">About</span>
+  <div class="interior-hero" id="main-content">
+    <div class="interior-hero-inner">
+      <div class="interior-hero-media" id="interiorHeroMedia">
+        <video
+          class="interior-hero-video"
+          id="interiorHeroVideo"
+          autoplay muted loop playsinline
+          poster="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          style="display:none"
+        ></video>
+        <img
+          class="hero-fallback"
+          id="interiorHeroImg"
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          alt=""
+          aria-hidden="true"
+        >
+        <button
+          class="interior-hero-toggle"
+          id="interiorVideoToggle"
+          aria-label="Pause background video"
+          aria-pressed="false"
+          style="display:none"
+        >
+          <svg class="icon-pause" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <rect x="3" y="2" width="4" height="12" rx="1"/>
+            <rect x="9" y="2" width="4" height="12" rx="1"/>
+          </svg>
+          <svg class="icon-play" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="display:none">
+            <path d="M4 2.5a1 1 0 0 1 1.5-.87l8 5.5a1 1 0 0 1 0 1.74l-8 5.5A1 1 0 0 1 4 13.5v-11z"/>
+          </svg>
+        </button>
       </div>
-      <h1 id="aboutHeroHeadline">About Mending Our Mistakes</h1>
+      <div class="interior-hero-text">
+        <div class="interior-hero-label" id="aboutHeroLabel">About</div>
+        <h1 id="aboutHeroHeadline">About Mending Our Mistakes</h1>
+        <p class="interior-hero-sub" id="aboutHeroSub"></p>
+      </div>
     </div>
   </div>
 
