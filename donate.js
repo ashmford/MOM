@@ -80,6 +80,7 @@ function injectEmbed(containerId, embedCode) {
 
 async function initDonatePage() {
   const query = encodeURIComponent(`*[_type == "donatePage"][0]{
+    seoTitle, seoDescription, seoImage{ asset->{ url } },
     heroLabel, heroHeadlinePlain, heroHeadlineItalic, heroSubhead,
     heroImage{ asset->{ url }, alt }, heroVideoUrl,
     formSectionLabel, formHeadlinePlain, formHeadlineItalic, formIntro,
@@ -103,7 +104,8 @@ async function initDonatePage() {
     setText('footerCopyright', d.footerCopyright);
     setText('footerCounties', d.footerCounties);
 
-    if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
+    if (window.applySeo) window.applySeo(d);
+  if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
   } catch (e) {
     console.warn('MOM: Could not fetch donate page.', e);
   }
