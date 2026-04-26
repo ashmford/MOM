@@ -1248,33 +1248,27 @@ footer {
   }
 
   .interior-hero-inner {
-    grid-template-columns: 1fr;
-    min-height: auto;
+    display: block;
+    max-width: 100%;
+    padding: 0;
     gap: 0;
-    direction: ltr !important;
   }
 
   .interior-hero-media {
     border-radius: 0;
-    aspect-ratio: 16/9;
-    max-height: 280px;
+    aspect-ratio: 3/2;
+    max-height: 300px;
     width: 100%;
-  }
-
-  .interior-hero-inner {
-    max-width: 100%;
-    padding: 0 24px;
-    gap: 0;
+    order: 1;
   }
 
   .interior-hero-text {
-    padding: 40px 0 56px;
+    padding: 40px 24px 56px;
     order: 2;
-    direction: ltr !important;
   }
 
   .interior-hero.text-only {
-    padding: 56px 0;
+    padding: 56px 24px;
     min-height: auto;
   }
 
