@@ -1,17 +1,23 @@
+// page.js — fetches a generic page from Sanity by slug and renders it.
+// Used by page.html for all Rachel-created pages.
+
 const PROJECT_ID  = 'o2xenqpa';
 const DATASET     = 'production';
 const API_VERSION = '2024-01-01';
 
-function imageUrl(asset) { return asset?.url || null; }
+function imageUrl(asset) {
+  if (!asset) return null;
+  return asset.url || null;
+}
 
-function setText(id, value) {
+function setText(selector, value) {
   if (!value) return;
-  const el = document.getElementById(id);
+  const el = document.querySelector(selector);
   if (el) el.textContent = value;
 }
 
-function setHeadline(id, plain, italic) {
-  const el = document.getElementById(id);
+function setHeadline(selector, plain, italic) {
+  const el = document.querySelector(selector);
   if (!el) return;
   let html = '';
   if (plain)  html += plain + ' ';
@@ -19,155 +25,140 @@ function setHeadline(id, plain, italic) {
   if (html)   el.innerHTML = html.trim();
 }
 
-async function fetchPartners() {
-  const query = encodeURIComponent(`*[_type == "partnersPage"][0]{
-    heroLabel, heroHeadlinePlain, heroHeadlineItalic, heroSubhead,
-    heroCtaLabel, heroCtaUrl,
+function getSlug() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('slug');
+}
+
+async function fetchPage(slug) {
+  const query = encodeURIComponent(`*[_type == "genericPage" && slug.current == "${slug}"][0]{
+    title, slug,
+    heroType, heroLabel, heroHeadline, heroHeadlineItalic, heroSubhead,
     heroImage{ asset->{ url }, alt }, heroVideoUrl,
-    introLabel, introHeadlinePlain, introHeadlineItalic, introBody, contactEmail,
-    categories[]{ label, headlinePlain, headlineItalic, body },
-    currentPartnersLabel, currentPartnersHeadlinePlain, currentPartnersHeadlineItalic,
-    partners[]{ name, url },
-    bottomCtaHeadlinePlain, bottomCtaHeadlineItalic, bottomCtaBody,
-    bottomCtaBtnLabel, bottomCtaBtnUrl,
-    additionalBlocks[]{ ..., image{ asset->{ url }, alt }, logos[]{ name, url, logo{ asset->{ url }, alt } }, stats[]{ number, label }, testimonials[]{ quote, name, detail } }
+    blocks[]{ ..., image{ asset->{ url }, alt }, logos[]{ name, url, logo{ asset->{ url }, alt } }, stats[]{ number, label }, testimonials[]{ quote, name, detail } },
+    donateHeadlinePlain, donateHeadlineItalic, donateBody,
+    donatePrimaryLabel, donatePrimaryUrl,
+    donateSecondaryLabel, donateSecondaryUrl
   }`);
 
+  const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${query}`;
   try {
-    const res = await fetch(`https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${query}`);
+    const res = await fetch(url);
     const data = await res.json();
     return data?.result || null;
   } catch (e) {
-    console.warn('MOM: Could not fetch partners page.', e);
+    console.warn('MOM: Could not fetch page content.', e);
     return null;
   }
 }
 
-function populateHero(d) {
-  setText('heroLabel', d.heroLabel);
-  setHeadline('heroHeadline', d.heroHeadlinePlain, d.heroHeadlineItalic);
-  setText('heroSubhead', d.heroSubhead);
+function renderHero(d) {
+  const hero = document.getElementById('pageHero');
+  const label = document.getElementById('pageHeroLabel');
+  const h1 = document.getElementById('pageHeroHeadline');
+  const sub = document.getElementById('pageHeroSub');
+  const media = document.getElementById('pageHeroMedia');
+  const video = document.getElementById('pageHeroVideo');
+  const img = document.getElementById('pageHeroImg');
+  const toggle = document.getElementById('pageVideoToggle');
 
-  const cta = document.getElementById('heroCta');
-  if (cta && d.heroCtaLabel && d.heroCtaUrl) {
-    cta.textContent = d.heroCtaLabel;
-    cta.href = d.heroCtaUrl;
-    cta.style.display = '';
+  if (!hero) return;
+
+  // Set browser title
+  if (d.title) document.title = `${d.title} — Mending Our Mistakes`;
+
+  // Set text
+  if (label && d.heroLabel) label.textContent = d.heroLabel;
+  if (h1) {
+    if (d.heroHeadlineItalic) {
+      h1.innerHTML = `${d.heroHeadline || ''} <em>${d.heroHeadlineItalic}</em>`;
+    } else {
+      h1.textContent = d.heroHeadline || '';
+    }
   }
+  if (sub && d.heroSubhead) sub.textContent = d.heroSubhead;
 
-  const hero = document.querySelector('.interior-hero');
-  const media = document.getElementById('interiorHeroMedia');
-  const img = document.getElementById('interiorHeroImg');
-  const video = document.getElementById('interiorHeroVideo');
-  const toggle = document.getElementById('interiorVideoToggle');
-  const imgUrl = imageUrl(d.heroImage?.asset);
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!imgUrl && !d.heroVideoUrl) {
-    if (hero) hero.classList.add('text-only');
+  // Hero type
+  if (d.heroType === 'text' || (!d.heroImage && !d.heroVideoUrl)) {
+    hero.classList.add('text-only');
     if (media) media.style.display = 'none';
     return;
   }
 
-  // Has media — show the column
-  if (media) media.classList.add('has-media');
+  // Split hero — image or video
+  const imgUrl = imageUrl(d.heroImage?.asset);
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (img && imgUrl) { img.src = imgUrl; img.alt = d.heroImage?.alt || ''; }
+  if (img && imgUrl) {
+    img.src = imgUrl;
+    img.alt = d.heroImage?.alt || '';
+  }
 
   if (video && d.heroVideoUrl && !prefersReduced) {
     const source = document.createElement('source');
-    source.src = d.heroVideoUrl; source.type = 'video/mp4';
+    source.src = d.heroVideoUrl;
+    source.type = 'video/mp4';
     video.appendChild(source);
     if (imgUrl) video.poster = imgUrl;
-    video.style.display = ''; video.load(); video.play().catch(() => {});
+    video.style.display = '';
+    video.load();
+    video.play().catch(() => {});
+
     if (toggle) {
       toggle.style.display = 'flex';
       const iconPause = toggle.querySelector('.icon-pause');
       const iconPlay  = toggle.querySelector('.icon-play');
       toggle.addEventListener('click', () => {
         const paused = video.paused;
-        video[paused ? 'play' : 'pause']();
-        toggle.setAttribute('aria-label', paused ? 'Pause background video' : 'Play background video');
-        toggle.setAttribute('aria-pressed', paused ? 'false' : 'true');
-        if (iconPause) iconPause.style.display = paused ? '' : 'none';
-        if (iconPlay)  iconPlay.style.display  = paused ? 'none' : '';
+        if (paused) {
+          video.play();
+          toggle.setAttribute('aria-label', 'Pause background video');
+          toggle.setAttribute('aria-pressed', 'false');
+          if (iconPause) iconPause.style.display = '';
+          if (iconPlay)  iconPlay.style.display  = 'none';
+        } else {
+          video.pause();
+          toggle.setAttribute('aria-label', 'Play background video');
+          toggle.setAttribute('aria-pressed', 'true');
+          if (iconPause) iconPause.style.display = 'none';
+          if (iconPlay)  iconPlay.style.display  = '';
+        }
       });
     }
   }
 }
 
-function populateIntro(d) {
-  setText('introLabel', d.introLabel);
-  setHeadline('intro-heading', d.introHeadlinePlain, d.introHeadlineItalic);
-  setText('introBody', d.introBody);
-  if (d.contactEmail) {
-    const emailEl = document.getElementById('contactEmail');
-    if (emailEl) {
-      emailEl.href = `mailto:${d.contactEmail}`;
-      emailEl.textContent = d.contactEmail;
-    }
-    const footerEmail = document.getElementById('footerEmail');
-    if (footerEmail) footerEmail.href = `mailto:${d.contactEmail}`;
+function renderDonateCta(d) {
+  setHeadline('.donate-cta h2', d.donateHeadlinePlain, d.donateHeadlineItalic);
+  setText('#pageDonateCTABody', d.donateBody);
+  const primary = document.getElementById('pageDonateCTAPrimary');
+  if (primary) {
+    if (d.donatePrimaryLabel) primary.textContent = d.donatePrimaryLabel;
+    if (d.donatePrimaryUrl)   primary.href = d.donatePrimaryUrl;
+  }
+  const secondary = document.getElementById('pageDonateCTASecondary');
+  if (secondary) {
+    if (d.donateSecondaryLabel) { secondary.textContent = d.donateSecondaryLabel; secondary.style.display = ''; }
+    if (d.donateSecondaryUrl)   secondary.href = d.donateSecondaryUrl;
   }
 }
 
-function populateCategories(d) {
-  if (!d.categories?.length) return;
-  const labels   = ['cat1Label', 'cat2Label', 'cat3Label'];
-  const headlines = ['cat1-heading', 'cat2-heading', 'cat3-heading'];
-  const bodies   = ['cat1Body', 'cat2Body', 'cat3Body'];
-
-  d.categories.forEach((cat, i) => {
-    if (i > 2) return;
-    setText(labels[i], cat.label);
-    setHeadline(headlines[i], cat.headlinePlain, cat.headlineItalic);
-    setText(bodies[i], cat.body);
-  });
-}
-
-function populatePartnersList(d) {
-  setText('currentPartnersLabel', d.currentPartnersLabel);
-  setHeadline('partners-list-heading', d.currentPartnersHeadlinePlain, d.currentPartnersHeadlineItalic);
-
-  if (d.partners?.length) {
-    const list = document.getElementById('partnersList');
-    if (list) {
-      list.innerHTML = d.partners.map(p => `
-        <li class="partners-list-item">
-          ${p.url
-            ? `<a href="${p.url}" target="_blank" rel="noopener">${p.name}</a>`
-            : `<span>${p.name}</span>`
-          }
-        </li>`).join('');
-    }
+async function initPage() {
+  const slug = getSlug();
+  if (!slug) {
+    document.getElementById('pageHeroHeadline').textContent = 'Page not found';
+    return;
   }
-}
 
-function populateBottomCta(d) {
-  setHeadline('bottomCtaHeadline', d.bottomCtaHeadlinePlain, d.bottomCtaHeadlineItalic);
-  setText('bottomCtaBody', d.bottomCtaBody);
-  const btn = document.getElementById('bottomCtaBtn');
-  if (btn) {
-    if (d.bottomCtaBtnLabel) btn.textContent = d.bottomCtaBtnLabel;
-    if (d.bottomCtaBtnUrl)   btn.href = d.bottomCtaBtnUrl;
+  const d = await fetchPage(slug);
+  if (!d) {
+    document.getElementById('pageHeroHeadline').textContent = 'Page not found';
+    return;
   }
+
+  renderHero(d);
+  if (window.renderBlocks) window.renderBlocks(d.blocks, '#pageBlocksAnchor');
+  renderDonateCta(d);
 }
 
-async function initPartnersPage() {
-  const d = await fetchPartners();
-  if (!d) return;
-
-  populateHero(d);
-  populateIntro(d);
-  populateCategories(d);
-  populatePartnersList(d);
-  populateBottomCta(d);
-
-  setText('footerTagline', d.footerTagline);
-  setText('footerCopyright', d.footerCopyright);
-  setText('footerCounties', d.footerCounties);
-
-  if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
-}
-
-document.addEventListener('DOMContentLoaded', initPartnersPage);
+document.addEventListener('DOMContentLoaded', initPage);
