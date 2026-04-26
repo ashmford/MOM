@@ -14,6 +14,8 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
   <nav aria-label="Main navigation">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Mending Our Mistakes home">
@@ -53,7 +55,7 @@
       </video>
       <img
         class="hero-fallback"
-        src="https://images.unsplash.com/photo-1591522810850-58128c5fb089?w=1600&q=80&auto=format&fit=crop"
+        src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
         alt=""
         aria-hidden="true"
       >
@@ -94,8 +96,8 @@
       <div class="mission-layout">
         <div class="mission-image">
           <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&auto=format&fit=crop"
-            alt="Two people in a supportive conversation"
+            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+            alt=""
             loading="lazy"
           >
         </div>
@@ -322,13 +324,39 @@
   <script src="nav.js"></script>
   <script src="home.js"></script>
   <script>
-    // Mobile nav toggle
+    // Mobile nav toggle with overlay
     const navToggle = document.querySelector('.nav-mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+      navLinks.classList.add('mobile-open');
+      navOverlay.style.display = 'block';
+      requestAnimationFrame(() => navOverlay.classList.add('open'));
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      navLinks.classList.remove('mobile-open');
+      navOverlay.classList.remove('open');
+      navOverlay.addEventListener('transitionend', () => {
+        navOverlay.style.display = 'none';
+      }, { once: true });
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+
     navToggle.addEventListener('click', () => {
-      const open = navLinks.style.display === 'flex';
-      navLinks.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:20px 24px;gap:16px;z-index:99;';
-      navToggle.setAttribute('aria-expanded', String(!open));
+      navLinks.classList.contains('mobile-open') ? closeNav() : openNav();
+    });
+
+    navOverlay.addEventListener('click', closeNav);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) closeNav();
     });
 
     // Hero video: respect prefers-reduced-motion, wire up toggle button
