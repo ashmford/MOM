@@ -57,21 +57,7 @@ export default {
       type: 'url',
       group: 'hero',
       description: 'Optional. Paste a direct .mp4 URL. Used instead of image if provided.'
-    },
-    {
-      name: 'heroImagePosition',
-      title: 'Image position',
-      type: 'string',
-      group: 'hero',
-      options: {
-        list: [
-          { title: 'Image on left', value: 'left' },
-          { title: 'Image on right', value: 'right' }
-        ],
-        layout: 'radio'
-      },
-      initialValue: 'left'
-    },
+    }
 
     // ─── MISSION & VISION ─────────────────────────────
     {
