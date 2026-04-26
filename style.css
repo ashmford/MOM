@@ -1106,6 +1106,7 @@ footer {
   position: relative;
   overflow: hidden;
   padding: 96px 0;
+  overflow-x: clip;
 }
 
 .interior-hero.text-only {
@@ -1114,10 +1115,11 @@ footer {
 }
 
 .interior-hero-inner {
-  max-width: var(--max);
-  margin: 0 auto;
   width: 100%;
-  padding: 0 0 0 calc((100% - var(--max)) / 2 + 32px);
+  max-width: calc(var(--max) + 32px);
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
@@ -1133,6 +1135,7 @@ footer {
   aspect-ratio: 4/5;
   max-height: 520px;
   order: 2;
+  width: calc(100% + 0px);
 }
 
 .interior-hero-media img,
@@ -1262,6 +1265,7 @@ footer {
   }
 
   .interior-hero-inner {
+    max-width: 100%;
     padding: 0;
     gap: 0;
   }
