@@ -81,6 +81,7 @@ function injectEmbed(containerId, embedCode) {
 
 async function initGetHelpPage() {
   const query = encodeURIComponent(`*[_type == "getHelpPage"][0]{
+    seoTitle, seoDescription, seoImage{ asset->{ url } },
     heroLabel, heroHeadlinePlain, heroHeadlineItalic, heroSubhead,
     heroImage{ asset->{ url }, alt }, heroVideoUrl,
     formSectionLabel, formHeadlinePlain, formHeadlineItalic, formIntro,
@@ -104,7 +105,8 @@ async function initGetHelpPage() {
     setText('footerCopyright', d.footerCopyright);
     setText('footerCounties', d.footerCounties);
 
-    if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
+    if (window.applySeo) window.applySeo(d);
+  if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
   } catch (e) {
     console.warn('MOM: Could not fetch get help page.', e);
   }
