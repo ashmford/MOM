@@ -153,7 +153,29 @@ nav {
   transition: color 0.15s;
 }
 
-.nav-links a:hover { color: var(--text); }
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--purple-light, #c4a8e0);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-links a:hover {
+  color: var(--purple);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
 
 .nav-coming {
   font-size: 14px;
