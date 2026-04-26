@@ -40,7 +40,8 @@ function setImage(selector, asset, alt) {
 
 async function fetchAboutContent() {
   const query = encodeURIComponent(`*[_type == "aboutPage"][0]{
-    heroLabel, heroHeadline,
+    heroLabel, heroHeadline, heroSubhead,
+    heroImage{ asset->{ url }, alt }, heroVideoUrl, heroImagePosition,
     missionImage{ asset->{ url }, alt },
     missionHeadlinePlain, missionHeadlineItalic, missionHeadlineSuffix,
     missionBody, visionBody,
@@ -76,6 +77,68 @@ function populateAbout(d) {
   // Hero
   setText('#aboutHeroLabel', d.heroLabel);
   setText('#aboutHeroHeadline', d.heroHeadline);
+  setText('#aboutHeroSub', d.heroSubhead);
+
+  // Interior hero media and layout
+  const hero = document.getElementById('interiorHero');
+  const heroMedia = document.getElementById('interiorHeroMedia');
+  const heroImg = document.getElementById('interiorHeroImg');
+  const heroVideo = document.getElementById('interiorHeroVideo');
+  const heroToggle = document.getElementById('interiorVideoToggle');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Image position
+  if (hero && d.heroImagePosition === 'right') {
+    hero.classList.add('image-right');
+  }
+
+  const heroImgUrl = imageUrl(d.heroImage?.asset);
+
+  // No image and no video — text-only mode
+  if (!heroImgUrl && !d.heroVideoUrl) {
+    if (hero) hero.classList.add('text-only');
+    if (heroMedia) heroMedia.style.display = 'none';
+  } else {
+    // Set fallback image
+    if (heroImg && heroImgUrl) {
+      heroImg.src = heroImgUrl;
+      heroImg.alt = d.heroImage?.alt || '';
+    }
+
+    // Video
+    if (heroVideo && d.heroVideoUrl && !prefersReduced) {
+      const source = document.createElement('source');
+      source.src = d.heroVideoUrl;
+      source.type = 'video/mp4';
+      heroVideo.appendChild(source);
+      if (heroImgUrl) heroVideo.poster = heroImgUrl;
+      heroVideo.style.display = '';
+      heroVideo.load();
+      heroVideo.play().catch(() => {});
+
+      if (heroToggle) {
+        heroToggle.style.display = 'flex';
+        const iconPause = heroToggle.querySelector('.icon-pause');
+        const iconPlay = heroToggle.querySelector('.icon-play');
+        heroToggle.addEventListener('click', () => {
+          const paused = heroVideo.paused;
+          if (paused) {
+            heroVideo.play();
+            heroToggle.setAttribute('aria-label', 'Pause background video');
+            heroToggle.setAttribute('aria-pressed', 'false');
+            if (iconPause) iconPause.style.display = '';
+            if (iconPlay) iconPlay.style.display = 'none';
+          } else {
+            heroVideo.pause();
+            heroToggle.setAttribute('aria-label', 'Play background video');
+            heroToggle.setAttribute('aria-pressed', 'true');
+            if (iconPause) iconPause.style.display = 'none';
+            if (iconPlay) iconPlay.style.display = '';
+          }
+        });
+      }
+    }
+  }
 
   // Mission & Vision
   setImage('#aboutMissionImg', d.missionImage?.asset, d.missionImage?.alt);
