@@ -96,9 +96,10 @@ function populateHero(d) {
   }
 
   const ctaSecondary = document.querySelector('.hero-ctas .btn-outline');
-  if (ctaSecondary) {
-    if (d.heroSecondaryLabel) ctaSecondary.textContent = d.heroSecondaryLabel;
-    if (d.heroSecondaryUrl)   ctaSecondary.href = d.heroSecondaryUrl;
+  if (ctaSecondary && d.heroSecondaryLabel && d.heroSecondaryUrl) {
+    ctaSecondary.textContent = d.heroSecondaryLabel;
+    ctaSecondary.href = d.heroSecondaryUrl;
+    ctaSecondary.style.display = '';
   }
 
   setText('.hero-location', d.heroLocationLine);
@@ -194,9 +195,10 @@ function populateServices(d) {
   }
 
   const svcSecondary = document.querySelector('.services-cta .btn-outline');
-  if (svcSecondary) {
-    if (d.servicesSecondaryLabel) svcSecondary.textContent = d.servicesSecondaryLabel;
-    if (d.servicesSecondaryUrl)   svcSecondary.href = d.servicesSecondaryUrl;
+  if (svcSecondary && d.servicesSecondaryLabel && d.servicesSecondaryUrl) {
+    svcSecondary.textContent = d.servicesSecondaryLabel;
+    svcSecondary.href = d.servicesSecondaryUrl;
+    svcSecondary.style.display = '';
   }
 }
 
@@ -245,9 +247,10 @@ function populateDonate(d) {
   }
 
   const donSecondary = document.querySelector('.donate-cta-actions .btn-outline');
-  if (donSecondary) {
-    if (d.donateSecondaryLabel) donSecondary.textContent = d.donateSecondaryLabel;
-    if (d.donateSecondaryUrl)   donSecondary.href = d.donateSecondaryUrl;
+  if (donSecondary && d.donateSecondaryLabel && d.donateSecondaryUrl) {
+    donSecondary.textContent = d.donateSecondaryLabel;
+    donSecondary.href = d.donateSecondaryUrl;
+    donSecondary.style.display = '';
   }
 }
 
