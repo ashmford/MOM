@@ -1131,7 +1131,7 @@ footer {
   position: relative;
   overflow: hidden;
   background: var(--border);
-  border-radius: 12px 0 0 12px;
+  border-radius: 12px;
   aspect-ratio: 4/5;
   max-height: 520px;
   order: 2;
