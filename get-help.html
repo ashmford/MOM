@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Help — Mending Our Mistakes</title>
+  <meta name="description" content="Apply for services from Mending Our Mistakes. We support noncustodial parents in Arkansas navigating family court.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mending Our Mistakes home">
+        <div class="nav-logo-mark"><span>M</span></div>
+        <div class="nav-logo-text">
+          Mending Our Mistakes
+          <small>Malvern, Arkansas</small>
+        </div>
+      </a>
+      <ul class="nav-links" role="list"></ul>
+      <a href="donate.html" class="btn-donate">Donate</a>
+      <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="interior-hero" id="main-content">
+    <div class="interior-hero-inner">
+      <div class="interior-hero-media" id="interiorHeroMedia">
+        <video class="interior-hero-video" id="interiorHeroVideo" autoplay muted loop playsinline style="display:none"></video>
+        <img class="hero-fallback" id="interiorHeroImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" aria-hidden="true">
+        <button class="interior-hero-toggle" id="interiorVideoToggle" aria-label="Pause background video" aria-pressed="false" style="display:none">
+          <svg class="icon-pause" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+          <svg class="icon-play" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="display:none"><path d="M4 2.5a1 1 0 0 1 1.5-.87l8 5.5a1 1 0 0 1 0 1.74l-8 5.5A1 1 0 0 1 4 13.5v-11z"/></svg>
+        </button>
+      </div>
+      <div class="interior-hero-text">
+        <div class="interior-hero-label" id="heroLabel">Get help</div>
+        <h1 id="heroHeadline">Start here. <em>We'll walk with you.</em></h1>
+        <p class="interior-hero-sub" id="heroSubhead">Fill out the form below and a MOM navigator will be in touch. There is no cost for our services.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="mission" aria-labelledby="form-heading" id="intakeForm">
+    <div class="section-inner">
+      <div class="section-label"><span id="formSectionLabel">Intake form</span></div>
+      <h2 class="display" id="form-heading" id="formHeadline">Tell us a little <em>about your situation.</em></h2>
+      <p id="formIntro" style="font-size:17px;color:var(--text-mid);line-height:1.75;max-width:640px;margin-bottom:48px;"></p>
+
+      <!-- TALLY EMBED — paste your Tally embed code in Sanity under "Form embed code" -->
+      <!-- It will appear here automatically once added in Sanity -->
+      <div id="formEmbed" style="min-height:400px;">
+        <!-- Placeholder shown until embed code is added in Sanity -->
+        <div style="border:1.5px dashed var(--border);border-radius:12px;padding:64px 32px;text-align:center;color:var(--text-muted);">
+          <p style="font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Intake form</p>
+          <p style="font-size:14px;margin-top:8px;">Paste your Tally embed code in Sanity → Get Help Page → Form embed code</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="additionalBlocksAnchor"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-text">Mending Our Mistakes, Inc.</div>
+          <p id="footerTagline"></p>
+        </div>
+        <div class="footer-col">
+          <h4>Organization</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="partners.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="get-help.html">Get help</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="mailto:admin@mendingourmistakes.org" id="footerEmail">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span id="footerCopyright"></span>
+        <span id="footerCounties"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="animations.js"></script>
+  <script src="blocks.js"></script>
+  <script src="nav.js"></script>
+  <script src="get-help.js"></script>
+  <script>
+    const navToggle = document.querySelector('.nav-mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+    function openNav() {
+      navLinks.classList.add('mobile-open');
+      navOverlay.style.display = 'block';
+      requestAnimationFrame(() => navOverlay.classList.add('open'));
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      navLinks.classList.remove('mobile-open');
+      navOverlay.classList.remove('open');
+      navOverlay.addEventListener('transitionend', () => { navOverlay.style.display = 'none'; }, { once: true });
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+    navToggle.addEventListener('click', () => { navLinks.classList.contains('mobile-open') ? closeNav() : openNav(); });
+    navOverlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) closeNav(); });
+  </script>
+</body>
+</html>
