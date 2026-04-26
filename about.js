@@ -49,6 +49,7 @@ async function fetchAboutContent() {
     problemBody1, problemBody2, problemBody3,
     quoteText, quoteAttribution,
     peopleHeadlinePlain, peopleHeadlineItalic,
+    peopleImage{ asset->{ url }, alt },
     people[]{ name, title, linkedinUrl },
     philosophyHeadlinePlain, philosophyHeadlineItalic,
     philosophyBody1, philosophyBody2,
@@ -158,6 +159,18 @@ function populateAbout(d) {
   // People
   setHeadline('#people-heading', d.peopleHeadlinePlain, d.peopleHeadlineItalic, null);
 
+  // People section image
+  const peopleImg = document.getElementById('aboutPeopleImg');
+  const peopleImgWrap = document.getElementById('aboutPeopleImageWrap');
+  const peopleImgUrl = imageUrl(d.peopleImage?.asset);
+  if (peopleImg && peopleImgUrl) {
+    peopleImg.src = peopleImgUrl;
+    peopleImg.alt = d.peopleImage?.alt || '';
+  } else if (peopleImgWrap && !peopleImgUrl) {
+    // No image yet — keep placeholder box visible, just styled as empty
+    peopleImgWrap.style.opacity = '0.3';
+  }
+
   if (d.people?.length) {
     const list = document.getElementById('peopleList');
     if (list) {
@@ -193,9 +206,10 @@ function populateAbout(d) {
     if (d.donatePrimaryUrl)   primary.href = d.donatePrimaryUrl;
   }
   const secondary = document.getElementById('donateCTASecondary');
-  if (secondary) {
-    if (d.donateSecondaryLabel) secondary.textContent = d.donateSecondaryLabel;
-    if (d.donateSecondaryUrl)   secondary.href = d.donateSecondaryUrl;
+  if (secondary && d.donateSecondaryLabel && d.donateSecondaryUrl) {
+    secondary.textContent = d.donateSecondaryLabel;
+    secondary.href = d.donateSecondaryUrl;
+    secondary.style.display = '';
   }
 
   // Footer from siteSettings (shared)
