@@ -45,6 +45,7 @@ async function fetchHomeContent() {
     heroPrimaryLabel, heroPrimaryUrl,
     heroSecondaryLabel, heroSecondaryUrl,
     heroLocationLine,
+    seoTitle, seoDescription, seoImage{ asset->{ url } },
     heroImage{ asset->{ _ref, url }, alt },
     heroVideoUrl,
     missionLabelNum, missionLabelText,
@@ -279,6 +280,7 @@ async function initHomePage() {
   populateStats(d);
   populateTestimonials(d);
   populateDonate(d);
+  if (window.applySeo) window.applySeo(d);
   if (window.renderBlocks) window.renderBlocks(d.additionalBlocks, '#additionalBlocksAnchor');
 }
 
