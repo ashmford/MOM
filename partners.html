@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partners — Mending Our Mistakes</title>
+  <meta name="description" content="MOM is building a coordinated network of partners across legal advocacy, supervised visitation, and health and stabilization services in Arkansas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .partners-category { background: var(--bg-white); }
+    .partners-category:nth-child(even) { background: var(--bg); }
+
+    .partners-category-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .partners-category-label {
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+
+    .partners-category-body p {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    .partners-list-section { background: var(--bg); }
+
+    .partners-list {
+      list-style: none;
+      border-top: 0.5px solid var(--border);
+      margin-top: 48px;
+      columns: 2;
+      column-gap: 80px;
+    }
+
+    .partners-list-item {
+      padding: 16px 0;
+      border-bottom: 0.5px solid var(--border);
+      break-inside: avoid;
+    }
+
+    .partners-list-item a {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .partners-list-item a:hover {
+      color: var(--purple);
+      border-color: var(--purple);
+    }
+
+    .partners-list-item span {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .partners-bottom-cta { background: var(--bg-white); border-top: 0.5px solid var(--border); }
+
+    .partners-bottom-cta-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 96px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .partners-bottom-cta h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      max-width: 560px;
+    }
+
+    .partners-bottom-cta h2 em { font-style: italic; color: var(--purple); }
+
+    .partners-bottom-cta p {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-top: 16px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .partners-bottom-cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+
+    @media (max-width: 900px) {
+      .partners-category-layout { grid-template-columns: 1fr; gap: 24px; }
+      .partners-category-label { position: static; }
+      .partners-list { columns: 1; }
+      .partners-bottom-cta-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mending Our Mistakes home">
+        <div class="nav-logo-mark"><span>M</span></div>
+        <div class="nav-logo-text">
+          Mending Our Mistakes
+          <small>Malvern, Arkansas</small>
+        </div>
+      </a>
+      <ul class="nav-links" role="list"></ul>
+      <a href="donate.html" class="btn-donate">Donate</a>
+      <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="interior-hero" id="main-content">
+    <div class="interior-hero-inner">
+      <div class="interior-hero-media" id="interiorHeroMedia">
+        <video class="interior-hero-video" id="interiorHeroVideo" autoplay muted loop playsinline style="display:none"></video>
+        <img class="hero-fallback" id="interiorHeroImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" aria-hidden="true">
+        <button class="interior-hero-toggle" id="interiorVideoToggle" aria-label="Pause background video" aria-pressed="false" style="display:none">
+          <svg class="icon-pause" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+          <svg class="icon-play" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="display:none"><path d="M4 2.5a1 1 0 0 1 1.5-.87l8 5.5a1 1 0 0 1 0 1.74l-8 5.5A1 1 0 0 1 4 13.5v-11z"/></svg>
+        </button>
+      </div>
+      <div class="interior-hero-text">
+        <div class="interior-hero-label" id="heroLabel">Partners</div>
+        <h1 id="heroHeadline">The kind of partner <em>we're looking for.</em></h1>
+        <p class="interior-hero-sub" id="heroSubhead">MOM works because no single organization can do this alone. We're building a coordinated network across legal advocacy, supervised visitation, and health and stabilization services.</p>
+        <div style="margin-top: 28px;">
+          <a href="mailto:admin@mendingourmistakes.org" class="btn-primary" id="heroCta" style="display:none"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="mission" aria-labelledby="intro-heading">
+    <div class="section-inner">
+      <div class="mission-layout">
+        <div style="display:flex;flex-direction:column;justify-content:center;">
+          <div class="section-label"><span id="introLabel">Partnership</span></div>
+          <h2 class="display" id="intro-heading" id="introHeadline">Building the network that <em>makes this work.</em></h2>
+        </div>
+        <div>
+          <p id="introBody" style="font-size:17px;color:var(--text-mid);line-height:1.75;">Noncustodial parents navigating family court face barriers that no single service can address alone. MOM coordinates across legal, housing, health, and community systems to give parents a real pathway to stability. Our partners make that coordination possible.</p>
+          <p style="font-size:17px;color:var(--text-mid);line-height:1.75;margin-top:20px;">If your organization serves families in Garland, Hot Spring, Saline, or Grant County and wants to work alongside us, reach out to <a href="mailto:admin@mendingourmistakes.org" id="contactEmail" style="color:var(--purple);text-decoration:none;border-bottom:1px solid var(--purple);">admin@mendingourmistakes.org</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-category" aria-labelledby="cat1-heading">
+    <div class="section-inner">
+      <div class="partners-category-layout">
+        <div class="partners-category-label">
+          <div class="section-label"><span id="cat1Label">01 — Legal &amp; Advocacy</span></div>
+          <h2 class="display" id="cat1-heading" id="cat1Headline">Supporting parents <em>through the system.</em></h2>
+        </div>
+        <div class="partners-category-body">
+          <p id="cat1Body">Family law firms willing to provide limited-scope representation or "Know Your Rights" workshops. Mediation services that specialize in high-conflict custody cases and can help parents reach agreements outside of a judge's ruling. Paternity and child support specialists who can help noncustodial parents understand and navigate the financial logistics of the system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-category" aria-labelledby="cat2-heading">
+    <div class="section-inner">
+      <div class="partners-category-layout">
+        <div class="partners-category-label">
+          <div class="section-label"><span id="cat2Label">02 — Supervised Visitation</span></div>
+          <h2 class="display" id="cat2-heading" id="cat2Headline">Creating <em>safe spaces</em> for families.</h2>
+        </div>
+        <div class="partners-category-body">
+          <p id="cat2Body">Visitation centers that provide safe, neutral, child-friendly environments for supervised visits. Public libraries and community centers interested in establishing MOM Corners — safe, public meeting spots for families. Therapeutic supervised visitation providers whose mental health professionals can oversee visits and provide real-time support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-category" aria-labelledby="cat3-heading">
+    <div class="section-inner">
+      <div class="partners-category-layout">
+        <div class="partners-category-label">
+          <div class="section-label"><span id="cat3Label">03 — Health &amp; Stabilization</span></div>
+          <h2 class="display" id="cat3-heading" id="cat3Headline">Building the <em>foundation</em> for everything else.</h2>
+        </div>
+        <div class="partners-category-body">
+          <p id="cat3Body">Trauma-informed counseling centers that can provide priority referrals for parents dealing with CPTSD or postpartum trauma. Transitional housing programs — especially those with reunification stage options where children can stay overnight as the parent progresses. Mobile health clinics that can provide low-cost physicals or dental care, which are often overlooked barriers to employment and court compliance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-list-section" aria-labelledby="partners-list-heading">
+    <div class="section-inner">
+      <div class="section-label"><span id="currentPartnersLabel">Our partners</span></div>
+      <h2 class="display" id="partners-list-heading" id="currentPartnersHeadline">Organizations <em>working alongside us.</em></h2>
+      <ul class="partners-list" id="partnersList">
+        <li class="partners-list-item"><span>[Partner name]</span></li>
+        <li class="partners-list-item"><span>[Partner name]</span></li>
+        <li class="partners-list-item"><span>[Partner name]</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="partners-bottom-cta" role="region" aria-label="Become a partner">
+    <div class="partners-bottom-cta-inner">
+      <div>
+        <h2 id="bottomCtaHeadline">Ready to <em>partner with us?</em></h2>
+        <p id="bottomCtaBody">We're actively building relationships with organizations across our four-county service area. If you work in legal advocacy, supervised visitation, health services, housing, workforce development, or community support — we want to talk.</p>
+      </div>
+      <div class="partners-bottom-cta-actions">
+        <a href="mailto:admin@mendingourmistakes.org" class="btn-primary btn-large" id="bottomCtaBtn">Email us</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="additionalBlocksAnchor"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-text">Mending Our Mistakes, Inc.</div>
+          <p id="footerTagline"></p>
+        </div>
+        <div class="footer-col">
+          <h4>Organization</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="partners.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="get-help.html">Get help</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="mailto:admin@mendingourmistakes.org" id="footerEmail">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span id="footerCopyright"></span>
+        <span id="footerCounties"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="animations.js"></script>
+  <script src="blocks.js"></script>
+  <script src="nav.js"></script>
+  <script src="partners.js"></script>
+  <script>
+    const navToggle = document.querySelector('.nav-mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+    function openNav() {
+      navLinks.classList.add('mobile-open');
+      navOverlay.style.display = 'block';
+      requestAnimationFrame(() => navOverlay.classList.add('open'));
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      navLinks.classList.remove('mobile-open');
+      navOverlay.classList.remove('open');
+      navOverlay.addEventListener('transitionend', () => { navOverlay.style.display = 'none'; }, { once: true });
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
+    navToggle.addEventListener('click', () => { navLinks.classList.contains('mobile-open') ? closeNav() : openNav(); });
+    navOverlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) closeNav(); });
+  </script>
+</body>
+</html>
