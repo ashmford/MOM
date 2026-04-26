@@ -385,7 +385,7 @@ h2.display em {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(245,243,238,0.97) 42%, rgba(245,243,238,0.7) 65%, rgba(245,243,238,0.15) 100%);
+  background: linear-gradient(100deg, rgba(245,243,238,0.90) 38%, rgba(245,243,238,0.60) 62%, rgba(245,243,238,0.05) 100%);
 }
 
 .hero-inner {
@@ -918,7 +918,9 @@ footer {
   .btn-donate { display: none; }
   .hero h1 { font-size: 36px; }
   .hero-sub { font-size: 16px; }
-  .hero-overlay { background: linear-gradient(180deg, rgba(245,243,238,0.95) 60%, rgba(245,243,238,0.5) 100%); }
+  .hero-media { display: none; }
+  .hero-overlay { background: var(--bg); }
+  .hero-video-toggle { display: none !important; }
   .mission-layout { grid-template-columns: 1fr; gap: 40px; }
   .mission-image { aspect-ratio: 16/9; }
   .services-intro { grid-template-columns: 1fr; gap: 16px; }
